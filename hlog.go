@@ -303,51 +303,54 @@ func (l *Logger) Println(v ...interface{}) {
 // -----------------------------------------
 
 func (l *Logger) Debugf(format string, v ...interface{}) {
-	l.Output("", Ldebug, 2, fmt.Sprintf(format, v...))
+	l.Output("", Ldebug, 3, fmt.Sprintf(format, v...))
 }
 
 func (l *Logger) Debug(v ...interface{}) {
-	l.Output("", Ldebug, 2, fmt.Sprintln(v...))
+	l.Output("", Ldebug, 3, fmt.Sprintln(v...))
 }
 
 // -----------------------------------------
 func (l *Logger) Infof(format string, v ...interface{}) {
-	l.Output("", Linfo, 2, fmt.Sprintf(format, v...))
+	l.Output("", Linfo, 3, fmt.Sprintf(format, v...))
 }
 
 func (l *Logger) Info(v ...interface{}) {
-	l.Output("", Linfo, 2, fmt.Sprintln(v...))
+	l.Output("", Linfo, 3, fmt.Sprintln(v...))
 }
 
 // -----------------------------------------
 func (l *Logger) Warnf(format string, v ...interface{}) {
-	l.Output("", Lwarn, 2, fmt.Sprintf(format, v...))
+	l.Output("", Lwarn, 3, fmt.Sprintf(format, v...))
 }
 
 func (l *Logger) Warn(v ...interface{}) {
-	l.Output("", Lwarn, 2, fmt.Sprintln(v...))
+	l.Output("", Lwarn, 3, fmt.Sprintln(v...))
 }
 
 // -----------------------------------------
 
 func (l *Logger) Errorf(format string, v ...interface{}) {
-	l.Output("", Lerror, 2, fmt.Sprintf(format, v...))
+	l.Output("", Lerror, 3, fmt.Sprintf(format, v...))
 }
 
 func (l *Logger) Error(v ...interface{}) {
-	l.Output("", Lerror, 2, fmt.Sprintln(v...))
+	l.Output("", Lerror, 3, fmt.Sprintln(v...))
+}
+func (l *Logger) Error3(v ...interface{}) {
+	l.Output("", Lerror, 4, fmt.Sprintln(v...))
 }
 
 // -----------------------------------------
 
 func (l *Logger) Fatal(v ...interface{}) {
-	l.Output("", Lfatal, 2, fmt.Sprintln(v...))
+	l.Output("", Lfatal, 3, fmt.Sprintln(v...))
 	os.Exit(1)
 }
 
 // Fatalf is equivalent to l.Printf() followed by a call to os.Exit(1).
 func (l *Logger) Fatalf(format string, v ...interface{}) {
-	l.Output("", Lfatal, 2, fmt.Sprintf(format, v...))
+	l.Output("", Lfatal, 3, fmt.Sprintf(format, v...))
 	os.Exit(1)
 }
 
@@ -355,14 +358,14 @@ func (l *Logger) Fatalf(format string, v ...interface{}) {
 // Panic is equivalent to l.Print() followed by a call to panic().
 func (l *Logger) Panic(v ...interface{}) {
 	s := fmt.Sprintln(v...)
-	l.Output("", Lpanic, 2, s)
+	l.Output("", Lpanic, 3, s)
 	panic(s)
 }
 
 // Panicf is equivalent to l.Printf() followed by a call to panic().
 func (l *Logger) Panicf(format string, v ...interface{}) {
 	s := fmt.Sprintf(format, v...)
-	l.Output("", Lpanic, 2, s)
+	l.Output("", Lpanic, 3, s)
 	panic(s)
 }
 
